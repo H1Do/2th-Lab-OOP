@@ -40,6 +40,25 @@ public:
     }
 };
 
+// композиция 1
+class Square {
+private:
+    Point p1, p2; // точки на диагоналях
+public:
+    Square() : p1(), p2() {
+        std::cout << "Square()\n";
+    }
+    Square(int x1, int y1, int x2, int y2) : p1(x1, y1), p2(x2, y2) {
+        std::cout << "Square(int x1, int y1, int x2, int y2)\n";
+    }
+    Square(const Square& s1) : p1(s1.p1), p2(s1.p2) {
+        std::cout << "Square(const Square& s1)\n";
+    }
+    ~Square() {
+        std::cout << p1.x << ' ' << p1.y << ' ' << p2.x << ' ' << p2.y << "~Square() " << std::endl;
+    }
+};
+
 int Point::getY() {
     return y;
 }
@@ -51,16 +70,40 @@ int main() {
         Point c(b);
     }
 
+    /*
     Point* a = new Point();
     Point* b = new Point(10, 10);
     Point* c = new Point(*b);
     delete a;
     delete b;
     delete c;
+    */
 
-    {
+    /* {
         ColoredPoint a();
         ColoredPoint b(5, 10, 15);
         ColoredPoint c(b);
-    }
+    }*/
+
+    /*
+    Point* a = new ColoredPoint(10, 5, 1);
+    ColoredPoint* b = new ColoredPoint(10, 5, 1);
+    delete a;
+    delete b;
+    */
+
+    /*{
+        Square a;
+        Square b(5, 10, 15, 20);
+        Square c(b);
+    }*/
+
+    /*Square* c = new Square;
+    Square* a = new Square(10, 5, 3, 2);
+    Square* b = new Square(*a);
+    delete c;
+    delete a;
+    delete b;*/
+
+    return 0;
 }
